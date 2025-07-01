@@ -1,0 +1,105 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1>Welcome to AK Ecom</h1>
+  <p>Buy or sell with ease. Start by <a href="/login">logging in</a>.</p>
+</div>
+
+<%- include('partials/footer') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Products | AK Ecom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f1f3f6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #f0f0f0;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    .btn-add {
+      display: inline-block;
+      margin-bottom: 20px;
+      background: #2196f3;
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="/products/new" class="btn-add">+ Add Product</a>
+
+    <h1>Your Products</h1>
+
+    <div class="grid">
+      <% products.forEach(product => { %>
+        <div class="card">
+          <a href="/products/<%= product._id %>">
+            <img src="<%= product.image || '/images/default-product.png' %>" alt="<%= product.name %>">
+          </a>
+          <h3><%= product.name %></h3>
+          <p>₹<%= product.price %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+</body>
+</html>

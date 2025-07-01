@@ -1,0 +1,16 @@
+
+
+<h2><%= store.storeName %></h2>
+<p><%= store.description || 'Welcome to our store!' %></p>
+
+<hr />
+
+<h3>Products</h3>
+<ul>
+  <% if (products.length === 0) { %>
+    <li>No products yet.</li>
+  <% } %>
+  <% products.forEach(product => { %>
+    <li><strong><%= product.name %></strong> — ₹<%= product.price %></li>
+  <% }) %>
+</ul>

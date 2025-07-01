@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <div class="banner">Your Orders</div>
+
+  <div class="orders">
+    <% if (orders.length === 0) { %>
+      <p>No orders placed yet.</p>
+    <% } else { %>
+      <% orders.forEach(order => { %>
+        <div class="order-box">
+          <strong>Order ID:</strong> <%= order._id %><br>
+          <strong>Total:</strong> ₹<%= order.total %><br>
+          <strong>Date:</strong> <%= order.createdAt.toDateString() %>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

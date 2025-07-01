@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= store.storeName %> | AK Ecom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f3f6;
+    }
+
+    header {
+      background: linear-gradient(to right, #2196f3, #64b5f6);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .search-box {
+      margin: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-box input {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .banner {
+      width: 100%;
+      height: 160px;
+      background: url('https://via.placeholder.com/800x160.png?text=Welcome+to+<%= store.storeName %>') center/cover no-repeat;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background: white;
+      padding: 10px;
+    }
+
+    .categories div {
+      width: 25%;
+      text-align: center;
+      margin: 10px 0;
+      font-size: 13px;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .product {
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .product h3 {
+      margin: 8px 0 4px;
+      font-size: 14px;
+    }
+
+    .product p {
+      color: green;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #ccc;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    footer div {
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><%= store.storeName %></h1>
+    <span>🛒</span>
+  </header>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search products...">
+  </div>
+
+  <div class="banner"></div>
+
+  <div class="categories">
+    <div>Fashion</div>
+    <div>Mobiles</div>
+    <div>Home</div>
+    <div>Beauty</div>
+    <div>Gadgets</div>
+    <div>Food</div>
+    <div>Electronics</div>
+    <div>More</div>
+  </div>
+
+  <div class="product-list">
+    <% products.forEach(product => { %>
+      <div class="product">
+        <img src="<%= product.image || `https://via.placeholder.com/200x140?text=${encodeURIComponent(product.name)}` %>" alt="<%= product.name %>" />
+        <h3><%= product.name %></h3>
+        <p>₹<%= product.price %></p>
+      </div>
+    <% }) %>
+  </div>
+
+  <footer>
+    <div>🏠<br>Home</div>
+    <div>🔍<br>Search</div>
+    <div>👤<br>Account</div>
+    <div>🛒<br>Cart</div>
+  </footer>
+
+</body>
+</html>

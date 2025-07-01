@@ -1,0 +1,9 @@
+
+
+<h2>Store Settings</h2>
+<form action="/settings" method="POST">
+  <input type="text" name="storeName" placeholder="Store Name" value="<%= user.storeName %>" required />
+  <textarea name="storeDescription" placeholder="Description"><%= user.storeDescription %></textarea>
+  <input type="text" name="contactInfo" placeholder="Contact Info" value="<%= user.contactInfo %>" />
+  <button type="submit">Save</button>
+</form>
